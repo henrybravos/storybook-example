@@ -1,24 +1,23 @@
-# Workflow name
-name: "Chromatic Deployment"
+# .github/workflows/chromatic.yml
 
-# Event for the workflow
+name: "Chromatic"
+
 on: push
 
-# List of jobs
 jobs:
-  test:
-    # Operating System
+  chromatic:
     runs-on: ubuntu-latest
-    # Job steps
     steps:
-      - uses: actions/checkout@v4
+      - name: Checkout code
+        uses: actions/checkout@v4
         with:
           fetch-depth: 0
+
       - name: Install dependencies
-        run: npm ci
         run: pnpm install
-        run: yarn install --immutable --immutable-cache --check-cache
-      - uses: chromaui/action@latest
+
+      - name: Publish to Chromatic
+        uses: chromaui/action@latest
         with:
           projectToken: ${{ secrets.CHROMATIC_PROJECT_TOKEN }}
           token: ${{ secrets.CHR_TOKEN }}
