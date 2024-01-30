@@ -14,7 +14,8 @@ jobs:
           fetch-depth: 0
 
       - name: Install dependencies
-        run: pnpm install
+        # ⚠️ Pick one of these, matching the package manager for your project
+        run: npm ci
 
       - name: Publish to Chromatic
         uses: chromaui/action@latest
