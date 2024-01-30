@@ -40,6 +40,7 @@ const Task = ({ task, onArchiveTask, onPinTask }: TaskComponentProps) => {
           readOnly={true}
           name="title"
           placeholder="Input title"
+          style={{ backgroundColor: 'red' }}
         />
       </label>
 
