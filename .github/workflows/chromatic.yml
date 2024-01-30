@@ -11,11 +11,14 @@ jobs:
     runs-on: ubuntu-latest
     # Job steps
     steps:
-      - uses: actions/checkout@v3
+      - uses: actions/checkout@v4
         with:
           fetch-depth: 0
-      - run: yarn
-      - uses: chromaui/action@v1
+      - name: Install dependencies
+        run: npm ci
+        run: pnpm install
+        run: yarn install --immutable --immutable-cache --check-cache
+      - uses: chromaui/action@latest
         with:
           projectToken: ${{ secrets.CHROMATIC_PROJECT_TOKEN }}
           token: ${{ secrets.CHR_TOKEN }}
