@@ -40,8 +40,8 @@ const Task = ({ task, onArchiveTask, onPinTask }: TaskComponentProps) => {
           readOnly={true}
           name="title"
           placeholder="Input title"
-          style={{ backgroundColor: 'red' }}
-        />
+          style={{ textOverflow: 'ellipsis' }}
+          />
       </label>
 
       {state !== EnumTaskState.TASK_ARCHIVED && (
